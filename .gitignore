@@ -14,6 +14,14 @@ src/test/test_dash
 src/qt/test/test_dash-qt
 src/bench/bench_dash
 
+src/stash
+src/stashd
+src/stash-cli
+src/stash-tx
+src/test/test_stash
+src/qt/test/test_stash-qt
+src/bench/bench_stash
+
 # autoreconf
 Makefile.in
 aclocal.m4
@@ -63,6 +71,8 @@ libconftest.dylib*
 *.o-*
 *.patch
 .dash
+.stash
+.settings
 *.a
 *.pb.cc
 *.pb.h

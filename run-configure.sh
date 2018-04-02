@@ -2,4 +2,4 @@
 
 BUILD="$(./depends/config.guess)"
 PREFIX="$(pwd)/depends/$BUILD/"
-./configure --prefix="${PREFIX}"
+./configure --prefix="${PREFIX}" --enable-debug

@@ -5,7 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/dash-config.h"
+#include "config/stash-config.h"
 #endif
 
 #include "util.h"
@@ -516,13 +516,13 @@ void PrintExceptionContinue(const std::exception* pex, const char* pszThread)
 boost::filesystem::path GetDefaultDataDir()
 {
     namespace fs = boost::filesystem;
-    // Windows < Vista: C:\Documents and Settings\Username\Application Data\DashCore
-    // Windows >= Vista: C:\Users\Username\AppData\Roaming\DashCore
-    // Mac: ~/Library/Application Support/DashCore
-    // Unix: ~/.dashcore
+    // Windows < Vista: C:\Documents and Settings\Username\Application Data\StashCore
+    // Windows >= Vista: C:\Users\Username\AppData\Roaming\StashCore
+    // Mac: ~/Library/Application Support/StashCore
+    // Unix: ~/.stashcore
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "DashCore";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "StashCore";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -532,10 +532,10 @@ boost::filesystem::path GetDefaultDataDir()
         pathRet = fs::path(pszHome);
 #ifdef MAC_OSX
     // Mac
-    return pathRet / "Library/Application Support/DashCore";
+    return pathRet / "Library/Application Support/StashCore";
 #else
     // Unix
-    return pathRet / ".dashcore";
+    return pathRet / ".stashcore";
 #endif
 #endif
 }
