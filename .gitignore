@@ -6,14 +6,6 @@ reset-files.bash
 *.tar.gz
 
 *.exe
-src/dash
-src/dashd
-src/dash-cli
-src/dash-tx
-src/test/test_dash
-src/qt/test/test_dash-qt
-src/bench/bench_dash
-
 src/stash
 src/stashd
 src/stash-cli
@@ -43,8 +35,8 @@ config.log
 config.status
 configure
 libtool
-src/config/dash-config.h
-src/config/dash-config.h.in
+src/config/stash-config.h
+src/config/stash-config.h.in
 src/config/stamp-h1
 share/setup.nsi
 share/qt/Info.plist
@@ -133,12 +125,12 @@ share/BitcoindComparisonTool.jar
 .autotools
 /doc/doxygen/
 
-libdashconsensus.pc
+libstashconsensus.pc
 src/qt/dash-qt.bash
 qa/pull-tester/tests-config.sh
 
 #development symlinks
-dash-cli
-dashd
-dash-qt
+stash-cli
+stashd
+stash-qt
 make
