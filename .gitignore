@@ -5,6 +5,9 @@ reset-files.bash
 
 *.tar.gz
 
+src/test/test_dash
+src/qt/test/test_dash-qt
+
 *.exe
 src/stash
 src/stashd
