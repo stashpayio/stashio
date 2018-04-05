@@ -4,6 +4,9 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include "stdio.h"
+#include "arith_uint256.h"
+
 #include "chainparams.h"
 #include "consensus/merkle.h"
 
@@ -35,6 +38,20 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
     genesis.vtx.push_back(txNew);
     genesis.hashPrevBlock.SetNull();
     genesis.hashMerkleRoot = BlockMerkleRoot(genesis);
+
+    if (true && genesis.nNonce == 0) {
+            printf("recalculating genesis block\n");
+            arith_uint256 hashTarget = arith_uint256().SetCompact(genesis.nBits);
+            // deliberately empty for loop finds nonce value.
+            for(genesis.nNonce == 0; UintToArith256(genesis.GetHash()) > hashTarget; genesis.nNonce++){ }
+            printf("new genesisPOW target: %s\n", hashTarget.GetHex().c_str());
+            printf("new genesis merkle root: %s\n", genesis.hashMerkleRoot.ToString().c_str());
+            printf("new genesis nonce: %d\n", genesis.nNonce);
+            printf("new genesis hash: %s\n", genesis.GetHash().ToString().c_str());
+        }
+
+
+
     return genesis;
 }
 
@@ -137,10 +154,10 @@ public:
         nDelayGetHeadersTime = 24 * 60 * 60;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1522792904, 0, 0x1e0ffff0, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1522792904, 196983 , 0x1effffff, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x00000ffd590b1485b3caadc19b22e6379c733355108f107a430458cdf3407ab6"));
-        assert(genesis.hashMerkleRoot == uint256S("0xe0028eb9648db56b1ac77cf090b99048a8007e2bb64b68f092c03c7f56a662c7"));
+        assert(consensus.hashGenesisBlock == uint256S("0x0000764fb28348e51553d50d0bdd00eaaa79b093871dc729ba9db58e21427f7c"));
+        assert(genesis.hashMerkleRoot == uint256S("0x584695953070388f0e2cf9da555ac161f4038ba24599a95f15861777494484db"));
 
 
         vSeeds.push_back(CDNSSeedData("stash.org", "192.168.192.44"));
@@ -285,14 +302,14 @@ public:
         nDelayGetHeadersTime = 24 * 60 * 60;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1522792904, 0, 0x1e0ffff0, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1522876148, 19953, 0x1effffff, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x00000bafbc94add76cb75e2ec92894837288a481e5c005f6563d91623bf8bc2c"));
-        assert(genesis.hashMerkleRoot == uint256S("0xe0028eb9648db56b1ac77cf090b99048a8007e2bb64b68f092c03c7f56a662c7"));
+        assert(consensus.hashGenesisBlock == uint256S("0x0000725014839e64a5cd6e70f22abb5a3b82ed19a6c47516a6011a00cafbf299"));
+        assert(genesis.hashMerkleRoot == uint256S("0x584695953070388f0e2cf9da555ac161f4038ba24599a95f15861777494484db"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
-        vSeeds.push_back(CDNSSeedData("stash.org", "192.168.192.44"));
+//*******************************************************        vSeeds.push_back(CDNSSeedData("stash.org", "192.168.192.44"));
         //vSeeds.push_back(CDNSSeedData("dashdot.io",  "testnet-seed.dashdot.io"));
         //vSeeds.push_back(CDNSSeedData("masternode.io", "test.dnsseed.masternode.io"));
 
@@ -407,10 +424,10 @@ public:
         nDefaultPort = 19994;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1417713337, 1096447, 0x207fffff, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1522907444, 67783, 0x1effffff, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x000008ca1832a4baf228eb1553c03d3a2c8e02399550dd6ea8d65cec3ef23d2e"));
-        assert(genesis.hashMerkleRoot == uint256S("0xe0028eb9648db56b1ac77cf090b99048a8007e2bb64b68f092c03c7f56a662c7"));
+        assert(consensus.hashGenesisBlock == uint256S("0x000025bdf80f6161cf15fef781f40f026f27cc8b942e3a1056183e7818148cb2"));
+        assert(genesis.hashMerkleRoot == uint256S("0x584695953070388f0e2cf9da555ac161f4038ba24599a95f15861777494484db"));
 
         vFixedSeeds.clear(); //! Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();  //! Regtest mode doesn't have any DNS seeds.
