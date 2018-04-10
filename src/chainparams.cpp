@@ -160,7 +160,9 @@ public:
         assert(genesis.hashMerkleRoot == uint256S("0x2d19d1d9adda2d73e0a6a7b56d55391966875a969c2057647f1d22c21c65d21b"));
 
 
-        vSeeds.push_back(CDNSSeedData("stash.org", "192.168.192.44"));
+        vSeeds.push_back(CDNSSeedData("imac.5k.org", "10.1.1.90"));
+        vSeeds.push_back(CDNSSeedData("imac.org", "10.1.1.91"));
+        vSeeds.push_back(CDNSSeedData("macbook.org", "10.1.1.92"));
         //vSeeds.push_back(CDNSSeedData("dash.org", "dnsseed.dash.org"));
         //vSeeds.push_back(CDNSSeedData("dashdot.io", "dnsseed.dashdot.io"));
         //vSeeds.push_back(CDNSSeedData("masternode.io", "dnsseed.masternode.io"));
