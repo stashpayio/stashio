@@ -32,4 +32,3 @@ example, to run just the getarg_tests verbosely:
     test_dash --run_test=getarg_tests/doubledash
 
 Run  test_dash --help   for the full list.
-

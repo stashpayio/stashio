@@ -160,9 +160,9 @@ public:
         assert(genesis.hashMerkleRoot == uint256S("0x2d19d1d9adda2d73e0a6a7b56d55391966875a969c2057647f1d22c21c65d21b"));
 
 
-        vSeeds.push_back(CDNSSeedData("imac.5k.org", "10.1.1.90"));
-        vSeeds.push_back(CDNSSeedData("imac.org", "10.1.1.91"));
-        vSeeds.push_back(CDNSSeedData("macbook.org", "10.1.1.92"));
+        vSeeds.push_back(CDNSSeedData("imac.5k.org", "10.0.1.90"));
+        vSeeds.push_back(CDNSSeedData("imac.org", "10.0.1.91"));
+        vSeeds.push_back(CDNSSeedData("macbook.org", "10.0.1.92"));
         //vSeeds.push_back(CDNSSeedData("dash.org", "dnsseed.dash.org"));
         //vSeeds.push_back(CDNSSeedData("dashdot.io", "dnsseed.dashdot.io"));
         //vSeeds.push_back(CDNSSeedData("masternode.io", "dnsseed.masternode.io"));
@@ -243,7 +243,7 @@ static CMainParams mainParams;
 class CTestNetParams : public CChainParams {
 public:
     CTestNetParams() {
-        strNetworkID = "test";
+         strNetworkID = "test";
         consensus.nSubsidyHalvingInterval = 210240;
         consensus.nMasternodePaymentsStartBlock = 4010; // not true, but it's ok as long as it's less then nMasternodePaymentsIncreaseBlock
         consensus.nMasternodePaymentsIncreaseBlock = 4030;
@@ -255,7 +255,7 @@ public:
         consensus.nBudgetProposalEstablishingTime = 60*20;
         consensus.nSuperblockStartBlock = 4200; // NOTE: Should satisfy nSuperblockStartBlock > nBudgetPeymentsStartBlock
         consensus.nSuperblockCycle = 24; // Superblocks can be issued hourly on testnet
-        consensus.nGovernanceMinQuorum = 1;
+        consensus.nGovernanceMinQuorum = 0; //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX     1;
         consensus.nGovernanceFilterElements = 500;
         consensus.nMasternodeMinimumConfirmations = 1;
         consensus.nMajorityEnforceBlockUpgrade = 51;
@@ -311,7 +311,11 @@ public:
 
         vFixedSeeds.clear();
         vSeeds.clear();
-//*******************************************************        vSeeds.push_back(CDNSSeedData("stash.org", "192.168.192.44"));
+
+        vSeeds.push_back(CDNSSeedData("imac.5k.org", "10.0.1.90"));
+        vSeeds.push_back(CDNSSeedData("imac.org", "10.0.1.91"));
+        vSeeds.push_back(CDNSSeedData("macbook.org", "10.0.1.92"));
+
         //vSeeds.push_back(CDNSSeedData("dashdot.io",  "testnet-seed.dashdot.io"));
         //vSeeds.push_back(CDNSSeedData("masternode.io", "test.dnsseed.masternode.io"));
 
@@ -331,7 +335,7 @@ public:
 
         vFixedSeeds = std::vector<SeedSpec6>(); // std::vector<SeedSpec6>(pnSeed6_test, pnSeed6_test + ARRAYLEN(pnSeed6_test));
 
-        fMiningRequiresPeers = true;
+        fMiningRequiresPeers = false;
         fDefaultConsistencyChecks = false;
         fRequireStandard = false;
         fMineBlocksOnDemand = false;
